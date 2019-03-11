@@ -10,9 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_03_11_142345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boxes", force: :cascade do |t|
+    t.bigint "picture_id"
+    t.text "text"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["picture_id"], name: "index_boxes_on_picture_id"
+  end
+
+  create_table "newspapers", force: :cascade do |t|
+    t.bigint "tribe_id"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tribe_id"], name: "index_newspapers_on_tribe_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "layout"
+    t.bigint "box_id"
+    t.bigint "newspaper_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_pages_on_box_id"
+    t.index ["newspaper_id"], name: "index_pages_on_newspaper_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.bigint "newspaper_id"
+    t.string "cloudinary_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["newspaper_id"], name: "index_pictures_on_newspaper_id"
+  end
+
+  create_table "tribes", force: :cascade do |t|
+    t.string "name"
+    t.string "profile_pic"
+    t.text "address"
+    t.boolean "subscribe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
