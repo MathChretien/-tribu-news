@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   # get 'tribes/edit'
   # get 'tribes/update'
   # get 'tribes/destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
