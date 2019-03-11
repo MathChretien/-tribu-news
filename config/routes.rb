@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'boxes/index'
   get 'boxes/show'
   get 'boxes/new'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   get 'tribes/edit'
   get 'tribes/update'
   get 'tribes/destroy'
-  root to: 'pages#home'
+  root to: "tribes#index"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
