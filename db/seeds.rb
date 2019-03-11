@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+griffins = Tribe.create!(name:"griffins", address:"quahog")
+
+griffins_march = Newspaper.create!(tribe: griffins,
+  publish_month: Datetime.new(2018,03,01))
+
+
